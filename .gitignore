@@ -1,0 +1,30 @@
+# Dependencies
+node_modules/
+.pnpm-store/
+
+# Next.js
+/.next/
+/out/
+/next-env.d.ts
+
+# Build and test output
+/build/
+/dist/
+/coverage/
+*.tsbuildinfo
+.eslintcache
+
+# Environment files
+.env
+.env.*
+!.env.example
+
+# Deployment
+.vercel/
+
+# Logs
+*.log
+
+# macOS and Windows
+.DS_Store
+Thumbs.db

@@ -1,0 +1,5 @@
+{
+  "/icon.png/route": "app/icon.png/route.js",
+  "/manifest.webmanifest/route": "app/manifest.webmanifest/route.js",
+  "/[locale]/page": "app/[locale]/page.js"
+}

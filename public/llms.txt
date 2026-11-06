@@ -1,0 +1,21 @@
+# Dr.-Ing. Maram Abu-Muhfouz
+
+> Process Engineer – Research & Development. Materials scientist (Dr.-Ing., RWTH Aachen) based in Düsseldorf, Germany. Research at the Max Planck Institute for Sustainable Materials (formerly Max Planck Institute for Iron Research, MPIE) on β-FeSi₂ thin films for photovoltaics.
+
+## Key facts
+- Doctorate: Materials Science, RWTH Aachen University (2020–2025), research at MPIE Düsseldorf
+- Dissertation record: https://publications.rwth-aachen.de/record/1019384
+- Expertise: thin-film deposition (DC/RF sputtering, PVD), process-parameter optimisation, microstructure–property correlation
+- Characterisation: EBSD, XRD, SEM, ECCI, cathodoluminescence, FIB, STEM, atom probe tomography, AFM, STM/STS, Raman, UV-VIS
+- Simulation & programming: COMSOL Multiphysics, MATLAB, Python, C++
+- M.Sc. Nanoengineering & Nanoscience with distinction (KIT Karlsruhe & JUST); B.Sc. Electrical Power Engineering
+- Awards: CTCN MENA Youth Climate Innovation Award, 1st place (2025, 2022); TUM Open Lab Research Award (2018)
+- Languages: German C1, English C1, Arabic native
+- Open to: process engineering, R&D engineering and materials science roles (coatings, heat treatment, semiconductors, photovoltaics)
+
+## Pages
+- German: /de
+- English: /en
+
+## Contact
+- Email: marammuhfouz@outlook.com
