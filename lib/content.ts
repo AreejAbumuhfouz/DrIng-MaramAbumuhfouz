@@ -1,9 +1,9 @@
 // All portfolio content in German (default) and English.
 // Edit text here — every section on the site reads from this file.
 
-export const locales = ['de', 'en'] as const;
+export const locales = ['en', 'de'] as const;
 export type Locale = (typeof locales)[number];
-export const defaultLocale: Locale = 'de';
+export const defaultLocale: Locale = 'en';
 
 export const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL || 'https://maram-abumuhfouz.com').replace(/\/$/, '');
 
@@ -38,14 +38,14 @@ const de = {
   meta: {
     title: 'Dr.-Ing. Maram Abu-Muhfouz – Prozessingenieurin F&E | Dünnschicht & Werkstoffwissenschaft',
     description:
-      'Portfolio von Dr.-Ing. Maram Abu-Muhfouz: Promotion in Werkstoffwissenschaft (RWTH Aachen, Max-Planck-Institut), β-FeSi₂-Dünnschichten, EBSD, XRD, Elektronenmikroskopie und Prozessentwicklung von der Forschung bis zur Industrie.',
+      'Portfolio von Dr.-Ing. Maram Abu-Muhfouz: Promotion in Werkstofftechnik (RWTH Aachen, Max-Planck-Institut), β-FeSi₂-Dünnschichten, Perowskit-Solarzellen, COMSOL, EBSD, XRD, Elektronenmikroskopie und Prozessentwicklung von der Forschung bis zur Industrie.',
     keywords: [
       'Maram Abu-Muhfouz', 'Prozessingenieurin', 'Forschung und Entwicklung', 'Werkstoffwissenschaft', 'Dünnschicht',
       'β-FeSi2', 'EBSD', 'XRD', 'Elektronenmikroskopie', 'Sputtern', 'PVD', 'Photovoltaik', 'RWTH Aachen',
       'Max-Planck-Institut', 'Düsseldorf',
     ],
   },
-  nav: { home: 'Start', profile: 'Profil', research: 'Promotion', methods: 'Methoden', experience: 'Erfahrung', contact: 'Kontakt' },
+  nav: { home: 'Start', profile: 'Profil', research: 'Promotion', projects: 'Projekte', experience: 'Erfahrung', contact: 'Kontakt' },
   ui: {
     theme: 'Design wechseln', language: 'Sprache', downloadCv: 'Lebenslauf (PDF)', contactMe: 'Kontakt aufnehmen',
     viewThesis: 'Dissertation ansehen', watchTalk: 'Vortrag ansehen (MSE 2022)', skip: 'Zum Inhalt springen',
@@ -53,6 +53,7 @@ const de = {
   },
   hero: {
     eyebrow: 'Prozessingenieurin – Forschung & Entwicklung',
+    keywords: ['Prozessentwicklung', 'Mikrostruktur-Engineering', 'Phasenumwandlung', 'Materialcharakterisierung', 'Dünnschichtherstellung'],
     tagline: 'Von der Werkstoffwissenschaft zur industriellen Prozessentwicklung',
     intro:
       'Ich verbinde Dünnschichttechnologie, Mikrostrukturanalyse und datenbasierte Prozessoptimierung – vom Labor des Max-Planck-Instituts bis zur skalierbaren Anwendung.',
@@ -67,9 +68,9 @@ const de = {
     kicker: 'Kurzprofil',
     title: 'Analytisch. Systematisch. Lösungsorientiert.',
     text:
-      'Promovierte Werkstoffwissenschaftlerin (RWTH Aachen) mit Forschung am Max-Planck-Institut für Nachhaltige Materialien (ehem. Max-Planck-Institut für Eisenforschung) in Düsseldorf. Mein Schwerpunkt liegt auf der Herstellung und Charakterisierung von Dünnschichten und darauf, wie Prozessparameter die Mikrostruktur und damit die Materialeigenschaften bestimmen.',
+      'Promovierte Werkstoffingenieurin (RWTH Aachen) mit Forschung am Max-Planck-Institut für Nachhaltige Materialien (ehem. Max-Planck-Institut für Eisenforschung) in Düsseldorf. Mein Schwerpunkt liegt auf der Herstellung und Charakterisierung von Dünnschichten und darauf, wie Prozessparameter die Mikrostruktur und damit die Materialeigenschaften bestimmen.',
     points: [
-      { t: 'Promotion in Werkstoffwissenschaft', d: 'RWTH Aachen – Forschung am Max-Planck-Institut, Düsseldorf' },
+      { t: 'Promotion in Werkstofftechnik (Materials Engineering)', d: 'RWTH Aachen – Forschung am Max-Planck-Institut, Düsseldorf' },
       { t: 'β-FeSi₂-Dünnschichten', d: 'Nachhaltiges Absorbermaterial aus häufig vorkommenden Elementen für die Photovoltaik' },
       { t: 'Prozessentwicklung', d: 'Parameteranalyse und -optimierung bei DC/RF-Sputtern (PVD)' },
       { t: 'Mikrostruktur & Phasen', d: 'EBSD, ECCI, XRD, CL, FIB, APT – korrelative Charakterisierung' },
@@ -77,53 +78,88 @@ const de = {
     ],
   },
   research: {
-    kicker: 'Promotion',
+    kicker: 'Projekt 1 · Promotion',
     title: 'β-FeSi₂-Dünnschichten für die Photovoltaik',
-    subtitle: 'Bildung, Mikrostruktur und Phasenentwicklung gesputterter Schichten auf kostengünstigen Substraten',
+    thesis:
+      'A Study on the Microstructure Formation Mechanisms and Functional Properties of new β-FeSi₂-based Polycrystalline Thin Films for Photovoltaic Applications Using Correlative Electron Microscopy',
+    summaryTitle: 'Zusammenfassung der Dissertation',
+    summary:
+      'β-FeSi₂-Dünnschichten (~800 nm) wurden durch kontrolliertes DC-Sputtern auf Edelstahl (304SS), Si (100) und Saphir Al₂O₃ (0001) hergestellt – mit dem Ziel optimaler Morphologie, Textur und räumlicher Phasenverteilung.',
     blocks: [
-      {
-        t: 'Thema & Materialsystem',
-        d: 'β-FeSi₂ ist ein umweltfreundlicher Halbleiter aus häufig vorkommenden Elementen mit geringem CO₂-Fußabdruck. Sein optischer Absorptionskoeffizient (α > 10⁵ cm⁻¹ oberhalb von 1,0 eV) liegt mehr als eine Größenordnung über dem von Si und GaAs – ideal für sehr dünne Absorberschichten.',
-      },
-      {
-        t: 'Zentrale Forschungsfragen',
-        d: 'Wie steuern Prozessbedingungen die Phasenbildung? Wie entwickeln sich Mikrostruktur, Textur und Phasenverteilung über die Schichtdicke? Und lassen sich hochwertige Schichten auf preiswertem Edelstahl statt auf Silizium-Wafern herstellen?',
-      },
-      {
-        t: 'Einfluss von Prozess & Temperatur',
-        d: 'Schichten von 400 nm und 800 nm wurden auf 304-Edelstahl gesputtert. Die Abscheidung bei niedrigen Temperaturen (220–400 °C) ergab dichte, porenfreie Schichten mit guter Haftung zum Substrat.',
-      },
-      {
-        t: 'Mikrostruktur, Textur & Phasen',
-        d: 'Die Phasenumwandlung wurde mit EBSD und XRD verfolgt. EBSD-Mappings an Querschnitten zeigen Mikrostruktur, räumliche Phasenverteilung und kristallographische Textur der Schichten.',
-      },
-      {
-        t: 'Mein Beitrag & Ergebnisse',
-        d: 'Eigenständige Schichtherstellung (DC/RF-Sputtern), Optimierung der Abscheideparameter, Probenpräparation und korrelative Elektronenmikroskopie (EBSD, ECCI, CL, APT) sowie Modellierung mit COMSOL und MATLAB. Ergebnisse vorgestellt u. a. auf dem MSE-Kongress 2022 und der IEEE-NANO 2024.',
-      },
+      { t: 'Prozessstudie', d: 'Eine Serie von DC-PVD-Experimenten zu kombinierten Sputterparametern und weiteren Faktoren, die Morphologie, Texturbildung, Phasenumwandlung und die Stabilität der β-Phase steuern – inklusive keimbildungs- und wachstumskontrollierter Mechanismen.' },
+      { t: 'Korrelative Mikroskopie', d: 'EBSD, XRD und EDS zur Verfolgung der β-FeSi₂-Bildung; 2D-EBSD-Mappings an Querschnitten und Draufsichten für Mikrostruktur, Phasenverteilung und Textur; konfokale Lasermikroskopie für die Rauheit.' },
+      { t: 'Gelöste Herausforderung', d: 'Die klassische Hough-Indizierung scheiterte an komplexen tetragonalen/orthorhombischen Phasen, nanoskaligen Körnern und hoher Defektdichte – deshalb wurde Spherical Indexing (SI) für eine exakte Phasenidentifikation eingesetzt.' },
     ],
-    equationsTitle: 'Mathematische Grundlagen & Programmierung',
-    equationsText:
-      'Die Auswertung stützt sich auf physikalische Grundbeziehungen und eigene Skripte zur Datenanalyse und Simulation.',
-    equations: [
-      { f: 'nλ = 2d · sin θ', l: 'Bragg-Gleichung – Phasenidentifikation (XRD)' },
-      { f: 'I(x) = I₀ · e^(−αx)', l: 'Lambert-Beer – optische Absorption in dünnen Schichten' },
-      { f: '(αhν)² ∝ (hν − E_g)', l: 'Tauc-Beziehung – Bestimmung der Bandlücke' },
+    findingsTitle: 'Wichtigste Ergebnisse',
+    stats: [
+      { v: '90% ± 10%', l: 'Anteil der β-Phase auf 304SS' },
+      { v: '45 ± 25 nm', l: 'gleichmäßige Korngröße' },
+      { v: 'Ra = 32 nm', l: 'moderat glatte Oberfläche' },
+      { v: '(001)/(010)', l: 'scharfe Textur – erstmals nachgewiesen' },
     ],
-    tools: ['Python', 'MATLAB', 'COMSOL Multiphysics', 'C++', 'Datenanalyse'],
+    optimal: 'Optimale Bedingungen: 1 h Abscheidung · 12,12 nm/min · 500 °C Substrattemperatur · 1 Pa – kontinuierliche, hochwertige Schicht mit guter Haftung auf 304SS.',
+    tableHead: ['Substrat', 'Höchster β-Anteil', 'Textur'],
+    table: [
+      ['304SS', '90% ± 10% (1 h, 1 Pa, 500 °C)', 'schwächste; (010)-Pole am stärksten'],
+      ['Si (100)', 'bei 1 h, 0,5 Pa, 500 °C', 'stärkste; (010)-Pole am stärksten'],
+      ['Al₂O₃ (0001)', '98% ± 2%', '(001)-Peak am stärksten'],
+    ],
+    notes: [
+      'Temperatur: Oberhalb von 600 °C setzt die Fe/Si-Interdiffusion an der Grenzfläche ein.',
+      'Kammerposition: Proben in der Mitte zeigen eine scharfe Fasertextur, äußere Proben geneigte Fasern.',
+    ],
+    routeTitle: 'Optimierungsweg S1 → S4',
+    route: [
+      { t: 'S1 · Schichtdicke', d: 'Zeit variiert → optimal 66 min, 12,12 nm/min' },
+      { t: 'S2 · Phasenverteilung', d: 'Temperatur variiert → optimal 500 °C' },
+      { t: 'S3 · Phasendominanz', d: 'Druck variiert → optimal 1 Pa' },
+      { t: 'S4 · Textur', d: 'Substrattyp variiert bei festem Prozess' },
+    ],
+    gallery: [
+      { src: '/research/thickness.png', c: 'Dickenoptimierung & Korrelationsstudie (500 °C, 0,5 Pa): SEM, EDS und EBSD' },
+      { src: '/research/phase.png', c: 'EBSD-Phasenkarte: β 90% ± 10%, α 10% ± 5% (1 h, 500 °C, 1 Pa)' },
+      { src: '/research/ipf.png', c: 'EBSD-IPF-Karte der säulenförmigen β-FeSi₂-Körner' },
+      { src: '/research/sem_full.png', c: 'REM-Draufsicht und Querschnitt sowie Rauheitsprofile bei 0,5 und 1 Pa' },
+    ],
   },
   methods: {
     kicker: 'Methoden & Materialien',
     title: 'Vom Prozess zur Mikrostruktur',
     items: [
-      { k: 'EBSD', t: 'Mikrostruktur & kristallographische Textur', d: 'Orientierungs-, Phasen- und Korngrößenkarten an Querschnitten der Dünnschichten.' },
-      { k: 'XRD', t: 'Phasenidentifikation & Kristallstruktur', d: 'Verfolgung der Phasenumwandlung und Bestimmung der Kristallstruktur.' },
-      { k: 'SEM / ECCI / CL', t: 'Elektronenmikroskopie', d: 'Beobachtung der Mikrostruktur, Defektanalyse und lokale optoelektronische Eigenschaften.' },
-      { k: 'FIB / APT', t: 'Nanoskalige Analyse', d: 'Zielpräparation per FIB und Atomsondentomographie für die chemische Zusammensetzung.' },
+      { k: 'EBSD', t: 'Mikrostruktur & Textur', d: '2D-Mappings an Querschnitten und Draufsichten; Spherical Indexing für komplexe Phasen.', img: '/research/phase.png' },
+      { k: 'EDS · XRD', t: 'Zusammensetzung & Phasen', d: 'Elementzusammensetzung und Phasenidentifikation der β-FeSi₂-Bildung.', img: '/research/eds.png' },
+      { k: 'SEM', t: 'Elektronenmikroskopie', d: 'Draufsichten und Querschnitte der Schichten, Schichtdicke und Morphologie.', img: '/research/cross800.png' },
     ],
     materialsTitle: 'Materialien & Substrate',
-    materials: ['β-FeSi₂-Dünnschichten (400 nm / 800 nm)', 'Edelstahl 304 als kostengünstiges Substrat', 'DC- & RF-Magnetronsputtern (PVD)', 'Perowskit-Solarzellen (Kooperation)', 'ZnO, Ag-Nanostäbe, Graphen'],
-    figures: { ebsd: 'EBSD-Phasenkarte (Querschnitt)', xrd: 'XRD-Diffraktogramm', sem: 'REM-Aufnahme der Schichtoberfläche', crossSection: 'Querschnitt Schicht/Substrat' },
+    materials: ['β-FeSi₂-Dünnschichten (~800 nm)', 'DC-Sputtern (PVD)', 'Edelstahl 304SS', 'Si (100)', 'Saphir Al₂O₃ (0001)', 'Konfokale Lasermikroskopie', 'Spherical Indexing'],
+  },
+  projects: {
+    kicker: 'Projekte',
+    title: 'Weitere Forschungsprojekte',
+    items: [
+      {
+        n: '02', tag: 'Masterstudium · KIT & JUST', t: 'Nanoengineering & Nanoscience',
+        d: 'M.Sc. mit Auszeichnung (2018–2020): MSM-Photodetektor (Au/Pt-Schottky-Elektroden auf Si), Antireflexschichten MgF₂/TiO₂ auf GaAs (COMSOL) und Sol-Gel-Nanostrukturen (ZnO, Ag-Nanostäbe).',
+        stats: [], img: '', tools: 'Mask Aligner · Sputtern · Keithley 4200A · COMSOL · SEM · UV-VIS',
+      },
+      {
+        n: '03', tag: 'Perowskit-Solarzellen', t: 'Upconversion-Kristalle für Perowskit-Solarzellen',
+        d: 'Modeling and Characterization of the Conversion Efficiency Enhancement of Perovskite Solar Cells that Employ Upconversion Crystals for the Solar Spectrum. UC-Kristalle wandeln 976-nm-Licht in sichtbares Licht um, sodass die Zelle mehr vom Sonnenspektrum nutzt.',
+        stats: [
+          { v: '~50%', l: 'mehr Jsc bei maximaler Laserleistung' },
+          { v: '29,17 mA/cm²', l: 'Jsc mit 50-cm-Linse (18,99 ohne)' },
+          { v: '+8,3%', l: 'Jsc-Gewinn laut Modell' },
+        ],
+        img: '/research/setup.png', img2: '/research/jv.png',
+        tools: 'Bester von 12 Kristallen: BaF₂ : 15% Yb³⁺, 2% Er³⁺ · FAPbI₃-Zellen · Laser- und LED-Aufbauten',
+      },
+      {
+        n: '04', tag: 'COMSOL-Simulation', t: 'Gekoppelte optoelektronische Simulation einer Perowskit-Zelle',
+        d: 'Ein Modell verknüpft Lichtabsorption, Ladungstransport und Wärme im Schichtstapel ITO / ZnO / MAPbI₃ / Spiro-OMeTAD / Au über 24 h (1D → 2D → 3D): Optik → G(x), Drift-Diffusion mit Rekombination → J-V, Wärmeleitung → T(x,t).',
+        stats: [], img: '/research/comsol.png',
+        tools: 'Wave Optics · Semiconductor · Heat Transfer · Referenzergebnisse nach Makableh et al., Solar Energy 202 (2020)',
+      },
+    ],
   },
   relevance: {
     kicker: 'Bezug zur Position',
@@ -172,7 +208,7 @@ const de = {
     ],
     educationTitle: 'Ausbildung',
     education: [
-      { d: 'Dr.-Ing. Werkstoffwissenschaft', o: 'RWTH Aachen (Forschung am MPIE Düsseldorf)', y: '2020 – 2025' },
+      { d: 'Promotion (Dr.-Ing.) in Werkstofftechnik', o: 'RWTH Aachen (Forschung am MPIE Düsseldorf)', y: '2020 – 2025' },
       { d: 'M.Sc. Nanoengineering & Nanoscience – mit Auszeichnung', o: 'KIT Karlsruhe & JUST', y: '2018 – 2020' },
       { d: 'B.Sc. Elektrische Energietechnik', o: 'Al-Balqa’ Applied University', y: '2011 – 2015' },
     ],
@@ -220,7 +256,7 @@ const de = {
     kicker: 'FAQ',
     title: 'Kurz gefragt',
     items: [
-      { q: 'Wer ist Dr.-Ing. Maram Abu-Muhfouz?', a: 'Eine promovierte Werkstoffwissenschaftlerin (RWTH Aachen) und Prozessingenieurin für Forschung & Entwicklung mit Sitz in Düsseldorf. Sie forschte am Max-Planck-Institut zu β-FeSi₂-Dünnschichten für die Photovoltaik.' },
+      { q: 'Wer ist Dr.-Ing. Maram Abu-Muhfouz?', a: 'Eine promovierte Werkstoffingenieurin (PhD in Materials Engineering, RWTH Aachen) und Prozessingenieurin für Forschung & Entwicklung mit Sitz in Düsseldorf. Sie forschte am Max-Planck-Institut zu β-FeSi₂-Dünnschichten für die Photovoltaik.' },
       { q: 'Welche Methoden beherrscht sie?', a: 'Dünnschichtabscheidung (DC/RF-Sputtern, PVD) sowie Charakterisierung mit EBSD, XRD, SEM, ECCI, Kathodolumineszenz, FIB und Atomsondentomographie; Simulation mit COMSOL, MATLAB und Python.' },
       { q: 'Für welche Positionen ist sie offen?', a: 'Prozessingenieurin, F&E-Ingenieurin und Werkstoffwissenschaftlerin in Industrie und angewandter Forschung – insbesondere Beschichtung, Wärmebehandlung, Halbleiter und Photovoltaik.' },
       { q: 'Welche Sprachen spricht sie?', a: 'Deutsch (C1), Englisch (C1) und Arabisch (Muttersprache).' },
@@ -241,14 +277,14 @@ const en: Dict = {
   meta: {
     title: 'Dr.-Ing. Maram Abu-Muhfouz – R&D Process Engineer | Thin Films & Materials Science',
     description:
-      'Portfolio of Dr.-Ing. Maram Abu-Muhfouz: PhD in Materials Science (RWTH Aachen, Max Planck Institute), β-FeSi₂ thin films, EBSD, XRD, electron microscopy and process development from research to industry.',
+      'Portfolio of Dr.-Ing. Maram Abu-Muhfouz: PhD in Materials Engineering (RWTH Aachen, Max Planck Institute), β-FeSi₂ thin films, perovskite solar cells, COMSOL, EBSD, XRD, electron microscopy and process development from research to industry.',
     keywords: [
       'Maram Abu-Muhfouz', 'Process Engineer', 'Research and Development', 'Materials Science', 'Thin Films',
       'β-FeSi2', 'EBSD', 'XRD', 'Electron Microscopy', 'Sputtering', 'PVD', 'Photovoltaics', 'RWTH Aachen',
       'Max Planck Institute', 'Düsseldorf',
     ],
   },
-  nav: { home: 'Home', profile: 'Profile', research: 'PhD', methods: 'Methods', experience: 'Experience', contact: 'Contact' },
+  nav: { home: 'Home', profile: 'Profile', research: 'PhD', projects: 'Projects', experience: 'Experience', contact: 'Contact' },
   ui: {
     theme: 'Toggle theme', language: 'Language', downloadCv: 'Download CV (PDF)', contactMe: 'Get in touch',
     viewThesis: 'View dissertation', watchTalk: 'Watch talk (MSE 2022)', skip: 'Skip to content',
@@ -256,6 +292,7 @@ const en: Dict = {
   },
   hero: {
     eyebrow: 'Process Engineer – Research & Development',
+    keywords: ['Process Development', 'Microstructure Engineering', 'Phase Transformation', 'Material Characterization', 'Thin Film Fabrication'],
     tagline: 'From Materials Science to Industrial Process Development',
     intro:
       'I connect thin-film technology, microstructure analysis and data-driven process optimisation – from the Max Planck Institute lab to scalable application.',
@@ -270,9 +307,9 @@ const en: Dict = {
     kicker: 'Professional Profile',
     title: 'Analytical. Systematic. Solution-driven.',
     text:
-      'Materials scientist with a doctorate from RWTH Aachen and research at the Max Planck Institute for Sustainable Materials (formerly Max Planck Institute for Iron Research) in Düsseldorf. My focus is on fabricating and characterising thin films and on how process parameters define microstructure and, with it, material properties.',
+      'Materials engineer with a PhD in Materials Engineering from RWTH Aachen and research at the Max Planck Institute for Sustainable Materials (formerly Max Planck Institute for Iron Research) in Düsseldorf. My focus is on fabricating and characterising thin films and on how process parameters define microstructure and, with it, material properties.',
     points: [
-      { t: 'PhD in Materials Science', d: 'RWTH Aachen – research at the Max Planck Institute, Düsseldorf' },
+      { t: 'PhD in Materials Engineering', d: 'RWTH Aachen – research at the Max Planck Institute, Düsseldorf' },
       { t: 'β-FeSi₂ thin films', d: 'Sustainable absorber material made from earth-abundant elements for photovoltaics' },
       { t: 'Process development', d: 'Parameter analysis and optimisation for DC/RF sputtering (PVD)' },
       { t: 'Microstructure & phases', d: 'EBSD, ECCI, XRD, CL, FIB, APT – correlative characterisation' },
@@ -280,52 +317,88 @@ const en: Dict = {
     ],
   },
   research: {
-    kicker: 'PhD Research',
+    kicker: 'Project 1 · PhD Research',
     title: 'β-FeSi₂ Thin Films for Photovoltaics',
-    subtitle: 'Formation, microstructure and phase evolution of sputtered films on low-cost substrates',
+    thesis:
+      'A Study on the Microstructure Formation Mechanisms and Functional Properties of new β-FeSi₂-based Polycrystalline Thin Films for Photovoltaic Applications Using Correlative Electron Microscopy',
+    summaryTitle: 'Thesis summary',
+    summary:
+      'β-FeSi₂ thin films (~800 nm) were produced by controlled DC sputtering on stainless steel (304SS), Si (100) and sapphire Al₂O₃ (0001), to reach the best morphology, texture and spatial phase distribution.',
     blocks: [
-      {
-        t: 'Research topic & material system',
-        d: 'β-FeSi₂ is an eco-friendly semiconductor made from abundant elements with a low carbon footprint. Its optical absorption coefficient (α > 10⁵ cm⁻¹ above 1.0 eV) is more than an order of magnitude higher than that of Si and GaAs – ideal for very thin absorber layers.',
-      },
-      {
-        t: 'Main research questions',
-        d: 'How do process conditions control phase formation? How do microstructure, texture and phase distribution evolve through the film thickness? And can high-quality films be grown on inexpensive stainless steel instead of silicon wafers?',
-      },
-      {
-        t: 'Influence of process & temperature',
-        d: '400 nm and 800 nm films were sputtered onto 304 stainless steel. Deposition at low temperatures (220–400 °C) produced dense, pore-free films with good adhesion to the substrate.',
-      },
-      {
-        t: 'Microstructure, texture & phases',
-        d: 'Phase transformation was tracked with EBSD and XRD. EBSD mapping on cross-sections reveals the microstructure, spatial phase distribution and crystallographic texture of the films.',
-      },
-      {
-        t: 'My contribution & findings',
-        d: 'Independent film fabrication (DC/RF sputtering), deposition-parameter optimisation, sample preparation and correlative electron microscopy (EBSD, ECCI, CL, APT), plus modelling in COMSOL and MATLAB. Results presented at the MSE Congress 2022 and IEEE-NANO 2024, among others.',
-      },
+      { t: 'Process study', d: 'A series of DC-PVD experiments on how combined sputtering parameters – and factors beyond them – drive morphology, texture formation, phase transformation and β-phase stability, including nucleation- vs. growth-controlled mechanisms.' },
+      { t: 'Correlative microscopy', d: 'EBSD, XRD and EDS to monitor β-FeSi₂ formation; 2D EBSD maps on cross-sections and plan views for microstructure, phase distribution and texture; confocal laser microscopy for roughness.' },
+      { t: 'Challenge solved', d: 'Classical Hough-transform indexing failed on complex tetragonal/orthorhombic phases, nano-sized grains and high defect density – so spherical indexing (SI) was used to identify the phases accurately.' },
     ],
-    equationsTitle: 'Mathematical foundations & programming',
-    equationsText: 'The analysis builds on core physical relations and my own scripts for data analysis and simulation.',
-    equations: [
-      { f: 'nλ = 2d · sin θ', l: 'Bragg’s law – phase identification (XRD)' },
-      { f: 'I(x) = I₀ · e^(−αx)', l: 'Beer–Lambert – optical absorption in thin films' },
-      { f: '(αhν)² ∝ (hν − E_g)', l: 'Tauc relation – band-gap determination' },
+    findingsTitle: 'Main findings',
+    stats: [
+      { v: '90% ± 10%', l: 'β-phase fraction on 304SS' },
+      { v: '45 ± 25 nm', l: 'uniform grain size' },
+      { v: 'Ra = 32 nm', l: 'moderately smooth surface' },
+      { v: '(001)/(010)', l: 'sharp texture, shown for the first time' },
     ],
-    tools: ['Python', 'MATLAB', 'COMSOL Multiphysics', 'C++', 'Data analysis'],
+    optimal: 'Optimal conditions: 1 h deposition · 12.12 nm/min · 500 °C substrate · 1 Pa – a continuous, high-quality film with good adhesion to 304SS.',
+    tableHead: ['Substrate', 'Highest β-phase fraction', 'Texture'],
+    table: [
+      ['304SS', '90% ± 10% (1 h, 1 Pa, 500 °C)', 'weakest; (010) poles strongest'],
+      ['Si (100)', 'at 1 h, 0.5 Pa, 500 °C', 'strongest; (010) poles strongest'],
+      ['Al₂O₃ (0001)', '98% ± 2%', '(001) peak strongest'],
+    ],
+    notes: [
+      'Temperature: above 600 °C, Fe/Si interdiffusion at the interface sets in.',
+      'Chamber position: centre samples show a sharp fibre texture; outer samples show inclined fibres.',
+    ],
+    routeTitle: 'Optimisation route S1 → S4',
+    route: [
+      { t: 'S1 · Thickness', d: 'Time varied → optimal 66 min, 12.12 nm/min' },
+      { t: 'S2 · Phase distribution', d: 'Temperature varied → optimal 500 °C' },
+      { t: 'S3 · Phase dominance', d: 'Pressure varied → optimal 1 Pa' },
+      { t: 'S4 · Texture', d: 'Substrate type varied at a fixed process' },
+    ],
+    gallery: [
+      { src: '/research/thickness.png', c: 'Thickness optimisation & correlation study (500 °C, 0.5 Pa): SEM, EDS and EBSD' },
+      { src: '/research/phase.png', c: 'EBSD phase map: β 90% ± 10%, α 10% ± 5% (1 h, 500 °C, 1 Pa)' },
+      { src: '/research/ipf.png', c: 'EBSD IPF map of columnar β-FeSi₂ grains' },
+      { src: '/research/sem_full.png', c: 'SEM plan and cross-section views and roughness profiles at 0.5 and 1 Pa' },
+    ],
   },
   methods: {
     kicker: 'Methods & Materials',
     title: 'From process to microstructure',
     items: [
-      { k: 'EBSD', t: 'Microstructure & crystallographic texture', d: 'Orientation, phase and grain-size maps on thin-film cross-sections.' },
-      { k: 'XRD', t: 'Phase identification & crystal structure', d: 'Tracking phase transformation and determining crystal structure.' },
-      { k: 'SEM / ECCI / CL', t: 'Electron microscopy', d: 'Microstructure observation, defect analysis and local optoelectronic properties.' },
-      { k: 'FIB / APT', t: 'Nanoscale analysis', d: 'Site-specific FIB preparation and atom probe tomography for chemical composition.' },
+      { k: 'EBSD', t: 'Microstructure & texture', d: '2D maps on cross-sections and plan views; spherical indexing for complex phases.', img: '/research/phase.png' },
+      { k: 'EDS · XRD', t: 'Composition & phases', d: 'Elemental composition and phase identification of β-FeSi₂ formation.', img: '/research/eds.png' },
+      { k: 'SEM', t: 'Electron microscopy', d: 'Plan views and cross-sections of the films, thickness and morphology.', img: '/research/cross800.png' },
     ],
     materialsTitle: 'Materials & substrates',
-    materials: ['β-FeSi₂ thin films (400 nm / 800 nm)', '304 stainless steel as low-cost substrate', 'DC & RF magnetron sputtering (PVD)', 'Perovskite solar cells (collaboration)', 'ZnO, Ag nanorods, graphene'],
-    figures: { ebsd: 'EBSD phase map (cross-section)', xrd: 'XRD diffractogram', sem: 'SEM image of the film surface', crossSection: 'Film/substrate cross-section' },
+    materials: ['β-FeSi₂ thin films (~800 nm)', 'DC sputtering (PVD)', '304 stainless steel', 'Si (100)', 'Sapphire Al₂O₃ (0001)', 'Confocal laser microscopy', 'Spherical indexing'],
+  },
+  projects: {
+    kicker: 'Projects',
+    title: 'Further research projects',
+    items: [
+      {
+        n: '02', tag: 'Master’s research · KIT & JUST', t: 'Nanoengineering & Nanoscience',
+        d: 'M.Sc. with distinction (2018–2020): MSM photodetector (Au/Pt Schottky electrodes on Si), MgF₂/TiO₂ anti-reflection coatings on GaAs (COMSOL) and sol-gel nanostructures (ZnO, Ag nanorods).',
+        stats: [], img: '', tools: 'Mask aligner · sputtering · Keithley 4200A · COMSOL · SEM · UV-VIS',
+      },
+      {
+        n: '03', tag: 'Perovskite solar cells', t: 'Up-conversion Crystals for Perovskite Solar Cells',
+        d: 'Modeling and Characterization of the Conversion Efficiency Enhancement of Perovskite Solar Cells that Employ Upconversion Crystals for the Solar Spectrum. UC crystals turn 976 nm light into visible light, so the cell harvests more of the solar spectrum.',
+        stats: [
+          { v: '~50%', l: 'more Jsc at maximum laser power' },
+          { v: '29.17 mA/cm²', l: 'Jsc with 50 cm lens (18.99 without)' },
+          { v: '+8.3%', l: 'Jsc gain predicted by the model' },
+        ],
+        img: '/research/setup.png', img2: '/research/jv.png',
+        tools: 'Best of 12 crystals: BaF₂ : 15% Yb³⁺, 2% Er³⁺ · FAPbI₃ cells · laser and LED setups',
+      },
+      {
+        n: '04', tag: 'COMSOL simulation', t: 'Coupled Optoelectronic Simulation of a Perovskite Cell',
+        d: 'One model links light absorption, charge transport and heat in an ITO / ZnO / MAPbI₃ / Spiro-OMeTAD / Au stack over 24 h (1D → 2D → 3D): optics → G(x), drift-diffusion with recombination → J-V, heat transfer → T(x,t).',
+        stats: [], img: '/research/comsol.png',
+        tools: 'Wave Optics · Semiconductor · Heat Transfer · reference results after Makableh et al., Solar Energy 202 (2020)',
+      },
+    ],
   },
   relevance: {
     kicker: 'Relevance to the Role',
@@ -374,7 +447,7 @@ const en: Dict = {
     ],
     educationTitle: 'Education',
     education: [
-      { d: 'Dr.-Ing. Materials Science', o: 'RWTH Aachen (research at MPIE Düsseldorf)', y: '2020 – 2025' },
+      { d: 'PhD in Materials Engineering (Dr.-Ing.)', o: 'RWTH Aachen (research at MPIE Düsseldorf)', y: '2020 – 2025' },
       { d: 'M.Sc. Nanoengineering & Nanoscience – with distinction', o: 'KIT Karlsruhe & JUST', y: '2018 – 2020' },
       { d: 'B.Sc. Electrical Power Engineering', o: 'Al-Balqa’ Applied University', y: '2011 – 2015' },
     ],
@@ -422,7 +495,7 @@ const en: Dict = {
     kicker: 'FAQ',
     title: 'Quick answers',
     items: [
-      { q: 'Who is Dr.-Ing. Maram Abu-Muhfouz?', a: 'A materials scientist with a doctorate from RWTH Aachen and an R&D process engineer based in Düsseldorf. She researched β-FeSi₂ thin films for photovoltaics at the Max Planck Institute.' },
+      { q: 'Who is Dr.-Ing. Maram Abu-Muhfouz?', a: 'A materials engineer with a PhD in Materials Engineering from RWTH Aachen and an R&D process engineer based in Düsseldorf. She researched β-FeSi₂ thin films for photovoltaics at the Max Planck Institute.' },
       { q: 'Which techniques does she master?', a: 'Thin-film deposition (DC/RF sputtering, PVD) and characterisation with EBSD, XRD, SEM, ECCI, cathodoluminescence, FIB and atom probe tomography; simulation in COMSOL, MATLAB and Python.' },
       { q: 'Which roles is she open to?', a: 'Process engineer, R&D engineer and materials scientist roles in industry and applied research – especially coatings, heat treatment, semiconductors and photovoltaics.' },
       { q: 'Which languages does she speak?', a: 'German (C1), English (C1) and Arabic (native).' },

@@ -5,7 +5,7 @@ export default function manifest(): MetadataRoute.Manifest {
     name: 'Dr.-Ing. Maram Abu-Muhfouz',
     short_name: 'Maram A.-M.',
     description: 'Process Engineer – Research & Development | Thin Films & Materials Science',
-    start_url: '/de',
+    start_url: '/en',
     display: 'standalone',
     background_color: '#040D1E',
     theme_color: '#0B2345',

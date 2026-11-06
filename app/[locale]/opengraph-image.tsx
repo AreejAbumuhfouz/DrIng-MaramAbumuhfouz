@@ -10,7 +10,7 @@ export function generateStaticParams() { return locales.map((locale) => ({ local
 
 export default async function OG({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
-  const t = getDict(isLocale(locale) ? locale : 'de');
+  const t = getDict(isLocale(locale) ? locale : 'en');
   const logo = await readFile(path.join(process.cwd(), 'public/logo.png'));
   const src = `data:image/png;base64,${logo.toString('base64')}`;
   return new ImageResponse(

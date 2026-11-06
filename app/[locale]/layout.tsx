@@ -35,7 +35,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     category: 'science',
     alternates: {
       canonical: `/${locale}`,
-      languages: { de: '/de', en: '/en', 'x-default': '/de' },
+      languages: { de: '/de', en: '/en', 'x-default': '/en' },
     },
     openGraph: {
       type: 'profile',

@@ -1,16 +1,16 @@
 import { notFound } from 'next/navigation';
 import {
   ArrowRight, Award, BookOpen, CheckCircle2, Download, ExternalLink, GraduationCap, Mail, MapPin,
-  Mic, PlayCircle, Sparkles, TrendingUp, Users, Code2, Layers, Thermometer, LineChart, SearchCheck,
+  Mic, PlayCircle, Sparkles, TrendingUp, Users, Layers, Thermometer, LineChart, SearchCheck,
 } from 'lucide-react';
-import { BottomNav } from '@/components/BottomNav';
-import { Controls } from '@/components/Controls';
+import { Navigation } from '@/components/Navigation';
+import Image from 'next/image';
 import { Figure } from '@/components/Figure';
 import { HeroVisual } from '@/components/HeroVisual';
 import { Reveal } from '@/components/Reveal';
 import { LinkedinIcon } from '@/components/LinkedinIcon';
 import { ScrollProgress } from '@/components/ScrollProgress';
-import { SITE_URL, figures, getDict, isLocale, person, type Locale } from '@/lib/content';
+import { SITE_URL, getDict, isLocale, person, type Locale } from '@/lib/content';
 
 export default async function Page({ params }: { params: Promise<{ locale: string }> }) {
   const { locale: raw } = await params;
@@ -42,7 +42,7 @@ export default async function Page({ params }: { params: Promise<{ locale: strin
           { '@type': 'CollegeOrUniversity', name: "Al-Balqa' Applied University" },
         ],
         worksFor: { '@type': 'ResearchOrganization', name: 'Max-Planck-Institut für Nachhaltige Materialien GmbH' },
-        knowsAbout: ['Thin films', 'β-FeSi2', 'EBSD', 'XRD', 'Electron microscopy', 'Sputtering', 'PVD', 'Photovoltaics', 'Process development', 'COMSOL', 'MATLAB', 'Python'],
+        knowsAbout: ['Materials engineering', 'Perovskite solar cells', 'Up-conversion', 'Spherical indexing', 'Thin films', 'β-FeSi2', 'EBSD', 'XRD', 'Electron microscopy', 'Sputtering', 'PVD', 'Photovoltaics', 'Process development', 'COMSOL', 'MATLAB', 'Python'],
         knowsLanguage: ['de', 'en', 'ar'],
         award: t.activities.awards.map((a) => `${a.t} (${a.y})`),
       },
@@ -57,7 +57,7 @@ export default async function Page({ params }: { params: Promise<{ locale: strin
       },
       {
         '@type': 'Thesis',
-        name: t.research.title,
+        name: t.research.thesis,
         inSupportOf: 'Dr.-Ing.',
         author: { '@id': `${SITE_URL}/#person` },
         sourceOrganization: 'RWTH Aachen University',
@@ -80,9 +80,9 @@ export default async function Page({ params }: { params: Promise<{ locale: strin
         {t.ui.skip}
       </a>
       <ScrollProgress />
-      <Controls locale={locale} labels={{ theme: t.ui.theme, language: t.ui.language }} />
+      <Navigation locale={locale} labels={t.nav} ui={{ theme: t.ui.theme, language: t.ui.language }} />
 
-      <main className="pb-32">
+      <main className="pb-32 lg:pb-12">
         {/* HERO */}
         <section id="home" className="relative overflow-hidden pt-28 sm:pt-32 lg:min-h-dvh lg:pt-36">
           <div aria-hidden className="grid-bg absolute inset-0" />
@@ -101,6 +101,9 @@ export default async function Page({ params }: { params: Promise<{ locale: strin
                 <p className="mt-5 font-display text-xl font-medium text-navy-700 sm:text-2xl dark:text-slate-200">{locale === 'de' ? `„${t.hero.tagline}“` : `“${t.hero.tagline}”`}</p>
               </Reveal>
               <Reveal delay={0.24}><p className="mt-4 max-w-xl text-base leading-relaxed text-navy-700/80 sm:text-lg dark:text-slate-400">{t.hero.intro}</p></Reveal>
+              <Reveal delay={0.28}>
+                <ul className="mt-6 flex flex-wrap gap-2">{t.hero.keywords.map((k) => <li key={k} className="chip !text-xs sm:!text-sm">{k}</li>)}</ul>
+              </Reveal>
               <Reveal delay={0.32}>
                 <div className="mt-8 flex flex-wrap gap-3">
                   <a href="#contact" className="btn-primary">{t.ui.contactMe} <ArrowRight size={16} /></a>
@@ -154,42 +157,77 @@ export default async function Page({ params }: { params: Promise<{ locale: strin
             <Reveal>
               <p className="kicker">{t.research.kicker}</p>
               <h2 className="h2 max-w-3xl">{t.research.title}</h2>
-              <p className="mt-4 max-w-2xl text-lg text-navy-700/80 dark:text-slate-400">{t.research.subtitle}</p>
+              <p className="mt-5 max-w-4xl border-l-4 border-amber pl-4 font-display text-lg font-medium italic leading-relaxed text-navy-700 sm:text-xl dark:text-slate-200">{t.research.thesis}</p>
               <div className="mt-6 flex flex-wrap gap-3">
                 <a href={person.dissertationUrl} target="_blank" rel="noopener" className="btn-primary"><BookOpen size={16} /> {t.ui.viewThesis} <ExternalLink size={14} /></a>
                 <a href={person.talkUrl} target="_blank" rel="noopener" className="btn-ghost"><PlayCircle size={16} /> {t.ui.watchTalk}</a>
               </div>
             </Reveal>
 
-            <ol className="mt-12 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+            {/* Summary */}
+            <Reveal className="mt-12">
+              <h3 className="text-xl font-semibold text-teal-600 dark:text-teal-300">{t.research.summaryTitle}</h3>
+              <p className="mt-3 max-w-4xl text-lg leading-relaxed text-navy-700/90 dark:text-slate-300">{t.research.summary}</p>
+            </Reveal>
+            <ol className="mt-6 grid gap-4 md:grid-cols-3">
               {t.research.blocks.map((b, i) => (
-                <Reveal as="li" key={b.t} delay={0.06 * i} className={`card relative overflow-hidden p-6 ${i === 4 ? 'md:col-span-2 lg:col-span-1' : ''}`}>
+                <Reveal as="li" key={b.t} delay={0.06 * i} className={`card relative overflow-hidden p-6 ${i === 2 ? 'bg-navy-800 text-white dark:bg-navy-900' : ''}`}>
                   <span aria-hidden className="absolute -right-2 -top-4 font-display text-8xl font-bold text-navy/[0.05] dark:text-white/[0.05]">0{i + 1}</span>
                   <span className="inline-block h-1 w-10 rounded-full bg-gradient-to-r from-amber to-teal" />
-                  <h3 className="mt-4 text-lg font-semibold text-navy-800 dark:text-white">{b.t}</h3>
-                  <p className="mt-2 text-sm leading-relaxed text-navy-700/80 dark:text-slate-400">{b.d}</p>
+                  <h4 className={`mt-4 text-lg font-semibold ${i === 2 ? 'text-amber-300' : 'text-navy-800 dark:text-white'}`}>{b.t}</h4>
+                  <p className={`mt-2 text-sm leading-relaxed ${i === 2 ? 'text-slate-200' : 'text-navy-700/80 dark:text-slate-400'}`}>{b.d}</p>
                 </Reveal>
               ))}
             </ol>
 
-            <div className="mt-6 grid gap-4 lg:grid-cols-[1.3fr_1fr]">
-              <Reveal className="card overflow-hidden bg-gradient-to-br from-navy-800 to-navy-900 p-6 text-white dark:from-navy-900 dark:to-navy-950 sm:p-8">
-                <div className="flex items-center gap-3"><Sparkles className="text-amber" size={20} /><h3 className="text-xl font-semibold">{t.research.equationsTitle}</h3></div>
-                <p className="mt-2 text-sm text-slate-300">{t.research.equationsText}</p>
-                <ul className="mt-6 grid gap-3">
-                  {t.research.equations.map((e) => (
-                    <li key={e.f} className="rounded-2xl border border-white/10 bg-white/5 p-4">
-                      <p className="font-mono text-lg text-amber-300 sm:text-xl">{e.f}</p>
-                      <p className="mt-1 text-xs text-slate-300">{e.l}</p>
-                    </li>
+            {/* Findings */}
+            <Reveal className="mt-16"><h3 className="font-display text-2xl font-bold text-navy-800 sm:text-3xl dark:text-white">{t.research.findingsTitle}</h3></Reveal>
+            <div className="mt-6 grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-4">
+              {t.research.stats.map((s, i) => (
+                <Reveal key={s.l} delay={0.06 * i} className="card p-5">
+                  <p className="font-display text-2xl font-bold text-gradient sm:text-3xl">{s.v}</p>
+                  <p className="mt-1 text-sm text-navy-700/80 dark:text-slate-400">{s.l}</p>
+                </Reveal>
+              ))}
+            </div>
+            <Reveal className="mt-4 rounded-3xl bg-gradient-to-r from-navy-800 to-teal-600 p-5 text-white sm:p-6">
+              <p className="text-sm leading-relaxed sm:text-base">{t.research.optimal}</p>
+            </Reveal>
+            <Reveal className="card mt-4 overflow-x-auto p-2">
+              <table className="w-full min-w-[520px] text-left text-sm">
+                <thead><tr className="text-teal-600 dark:text-teal-300">{t.research.tableHead.map((h) => <th key={h} className="px-4 py-3 font-semibold">{h}</th>)}</tr></thead>
+                <tbody>
+                  {t.research.table.map((r) => (
+                    <tr key={r[0]} className="border-t border-navy/10 dark:border-white/10">
+                      {r.map((c, j) => <td key={c} className={`px-4 py-3 ${j === 0 ? 'font-semibold text-navy-800 dark:text-white' : 'text-navy-700/80 dark:text-slate-400'}`}>{c}</td>)}
+                    </tr>
                   ))}
-                </ul>
-                <div className="mt-6 flex flex-wrap items-center gap-2">
-                  <Code2 size={16} className="text-teal-300" />
-                  {t.research.tools.map((x) => <span key={x} className="rounded-full bg-teal/20 px-3 py-1 text-xs text-teal-300">{x}</span>)}
-                </div>
-              </Reveal>
-              <Reveal delay={0.1}><Figure src={figures.code} caption={t.research.equationsTitle} pending={t.ui.imagePending} /></Reveal>
+                </tbody>
+              </table>
+            </Reveal>
+            <div className="mt-4 grid gap-4 md:grid-cols-2">
+              {t.research.notes.map((n) => <Reveal key={n} className="card p-5 text-sm text-navy-700/80 dark:text-slate-400">{n}</Reveal>)}
+            </div>
+
+            {/* Route */}
+            <Reveal className="mt-16"><h3 className="font-display text-2xl font-bold text-navy-800 sm:text-3xl dark:text-white">{t.research.routeTitle}</h3></Reveal>
+            <div className="mt-6 grid gap-6 lg:grid-cols-[1.6fr_1fr]">
+              <Reveal><Figure src="/research/route.png" caption={t.research.routeTitle} pending={t.ui.imagePending} contain /></Reveal>
+              <ol className="grid gap-3">
+                {t.research.route.map((r, i) => (
+                  <Reveal as="li" key={r.t} delay={0.06 * i} className="card flex gap-4 p-5">
+                    <span className="grid h-10 w-10 shrink-0 place-items-center rounded-2xl bg-gradient-to-br from-teal to-navy-800 text-sm font-bold text-white">S{i + 1}</span>
+                    <div><p className="font-semibold text-navy-800 dark:text-white">{r.t}</p><p className="text-sm text-navy-700/80 dark:text-slate-400">{r.d}</p></div>
+                  </Reveal>
+                ))}
+              </ol>
+            </div>
+
+            {/* Gallery */}
+            <div className="mt-6 grid gap-4 md:grid-cols-2">
+              {t.research.gallery.map((g, i) => (
+                <Reveal key={g.src} delay={0.06 * i}><Figure src={g.src} caption={g.c} pending={t.ui.imagePending} contain /></Reveal>
+              ))}
             </div>
           </div>
         </section>
@@ -200,24 +238,68 @@ export default async function Page({ params }: { params: Promise<{ locale: strin
             <p className="kicker">{t.methods.kicker}</p>
             <h2 className="h2">{t.methods.title}</h2>
           </Reveal>
-          <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="mt-10 grid gap-4 md:grid-cols-3">
             {t.methods.items.map((m, i) => (
-              <Reveal key={m.k} delay={0.07 * i} className="card group p-6 transition hover:-translate-y-1 hover:border-amber/50">
-                <span className="font-display text-2xl font-bold text-gradient">{m.k}</span>
-                <h3 className="mt-3 font-semibold text-navy-800 dark:text-white">{m.t}</h3>
-                <p className="mt-2 text-sm text-navy-700/75 dark:text-slate-400">{m.d}</p>
+              <Reveal key={m.k} delay={0.07 * i} className="card group overflow-hidden p-2 transition hover:-translate-y-1 hover:border-amber/50">
+                <div className="relative aspect-[4/3] overflow-hidden rounded-[1.25rem] bg-white">
+                  <Image src={m.img} alt={`${m.k} – ${m.t}`} fill sizes="(min-width:768px) 33vw, 100vw" className="object-contain transition duration-700 group-hover:scale-105" />
+                </div>
+                <div className="p-4">
+                  <span className="font-display text-2xl font-bold text-gradient">{m.k}</span>
+                  <h3 className="mt-2 font-semibold text-navy-800 dark:text-white">{m.t}</h3>
+                  <p className="mt-1 text-sm text-navy-700/75 dark:text-slate-400">{m.d}</p>
+                </div>
               </Reveal>
-            ))}
-          </div>
-          <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            {(['ebsd', 'xrd', 'sem', 'crossSection'] as const).map((k, i) => (
-              <Reveal key={k} delay={0.07 * i}><Figure src={figures[k]} caption={t.methods.figures[k]} pending={t.ui.imagePending} /></Reveal>
             ))}
           </div>
           <Reveal className="card mt-6 p-6 sm:p-8">
             <h3 className="text-lg font-semibold text-navy-800 dark:text-white">{t.methods.materialsTitle}</h3>
             <div className="mt-4 flex flex-wrap gap-2">{t.methods.materials.map((m) => <span key={m} className="chip">{m}</span>)}</div>
           </Reveal>
+        </section>
+
+        {/* PROJECTS 2–4 */}
+        <section id="projects" className="relative py-20 sm:py-28">
+          <div aria-hidden className="absolute inset-0 -z-10 bg-gradient-to-b from-transparent via-navy-50 to-transparent dark:via-navy-900/60" />
+          <div className="container-x">
+            <Reveal>
+              <p className="kicker">{t.projects.kicker}</p>
+              <h2 className="h2">{t.projects.title}</h2>
+            </Reveal>
+            <div className="mt-10 space-y-8">
+              {t.projects.items.map((p) => (
+                <Reveal key={p.n} as="article" className="card overflow-hidden p-6 sm:p-8">
+                  <div className={`grid gap-8 ${p.img ? 'lg:grid-cols-[1fr_1.15fr]' : ''}`}>
+                    <div>
+                      <div className="flex items-center gap-3">
+                        <span className="font-display text-4xl font-bold text-gradient">{p.n}</span>
+                        <span className="rounded-full bg-teal/10 px-3 py-1 text-xs font-semibold text-teal-600 dark:text-teal-300">{p.tag}</span>
+                      </div>
+                      <h3 className="mt-4 font-display text-2xl font-bold text-navy-800 sm:text-3xl dark:text-white">{p.t}</h3>
+                      <p className="mt-3 leading-relaxed text-navy-700/85 dark:text-slate-400">{p.d}</p>
+                      {p.stats.length > 0 && (
+                        <div className="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-3">
+                          {p.stats.map((s) => (
+                            <div key={s.l} className="rounded-2xl bg-navy-800 p-4 text-white dark:bg-navy-950">
+                              <p className="font-display text-xl font-bold text-amber-300">{s.v}</p>
+                              <p className="mt-1 text-xs text-slate-300">{s.l}</p>
+                            </div>
+                          ))}
+                        </div>
+                      )}
+                      <p className="mt-6 rounded-2xl bg-amber/15 px-4 py-3 text-sm font-medium text-navy-800 dark:text-amber-200">{p.tools}</p>
+                    </div>
+                    {p.img && (
+                      <div className="grid gap-4">
+                        <Figure src={p.img} caption={p.t} pending={t.ui.imagePending} contain tall={!('img2' in p)} />
+                        {'img2' in p && p.img2 && <Figure src={p.img2} caption={locale === 'de' ? 'J-V-Kurven mit 100-cm- und 50-cm-Linse' : 'J-V curves with 100 cm and 50 cm lens'} pending={t.ui.imagePending} contain />}
+                      </div>
+                    )}
+                  </div>
+                </Reveal>
+              ))}
+            </div>
+          </div>
         </section>
 
         {/* RELEVANCE */}
@@ -400,11 +482,10 @@ export default async function Page({ params }: { params: Promise<{ locale: strin
         </section>
       </main>
 
-      <footer className="container-x pb-32 text-center text-xs text-navy-700/60 dark:text-slate-500">
+      <footer className="container-x pb-32 lg:pb-10 text-center text-xs text-navy-700/60 dark:text-slate-500">
         © {new Date().getFullYear()} {person.fullName}. {t.footer.rights}
       </footer>
 
-      <BottomNav labels={t.nav} />
     </>
   );
 }

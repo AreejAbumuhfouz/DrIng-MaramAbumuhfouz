@@ -1,9 +1,13 @@
 # Dr.-Ing. Maram Abu-Muhfouz
 
-> Process Engineer – Research & Development. Materials scientist (Dr.-Ing., RWTH Aachen) based in Düsseldorf, Germany. Research at the Max Planck Institute for Sustainable Materials (formerly Max Planck Institute for Iron Research, MPIE) on β-FeSi₂ thin films for photovoltaics.
+> Process Engineer – Research & Development. PhD in Materials Engineering (Dr.-Ing., RWTH Aachen) based in Düsseldorf, Germany. Research at the Max Planck Institute for Sustainable Materials (formerly Max Planck Institute for Iron Research, MPIE) on β-FeSi₂ thin films for photovoltaics.
 
 ## Key facts
-- Doctorate: Materials Science, RWTH Aachen University (2020–2025), research at MPIE Düsseldorf
+- PhD in Materials Engineering, RWTH Aachen University (2020–2025), research at MPIE Düsseldorf
+- Thesis: A Study on the Microstructure Formation Mechanisms and Functional Properties of new β-FeSi₂-based Polycrystalline Thin Films for Photovoltaic Applications Using Correlative Electron Microscopy
+- Key PhD results: β-phase fraction 90% ± 10% on 304 stainless steel, grain size 45 ± 25 nm, Ra = 32 nm, first sharp (001)/(010) texture; optimum 1 h, 12.12 nm/min, 500 °C, 1 Pa; 98% ± 2% β on Al₂O₃ (0001)
+- Project: up-conversion crystals for perovskite solar cells – best BaF₂:15%Yb³⁺,2%Er³⁺; ~50% Jsc increase at max laser power
+- Project: coupled optics–electrical–thermal COMSOL model of a perovskite solar cell
 - Dissertation record: https://publications.rwth-aachen.de/record/1019384
 - Expertise: thin-film deposition (DC/RF sputtering, PVD), process-parameter optimisation, microstructure–property correlation
 - Characterisation: EBSD, XRD, SEM, ECCI, cathodoluminescence, FIB, STEM, atom probe tomography, AFM, STM/STS, Raman, UV-VIS
@@ -14,8 +18,8 @@
 - Open to: process engineering, R&D engineering and materials science roles (coatings, heat treatment, semiconductors, photovoltaics)
 
 ## Pages
+- English (default): /en
 - German: /de
-- English: /en
 
 ## Contact
 - Email: marammuhfouz@outlook.com
