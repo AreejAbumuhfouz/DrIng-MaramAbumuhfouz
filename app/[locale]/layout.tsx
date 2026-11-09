@@ -35,7 +35,18 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     category: 'science',
     alternates: {
       canonical: `/${locale}`,
-      languages: { de: '/de', en: '/en', 'x-default': '/en' },
+      languages: { en: '/en', de: '/de', 'x-default': '/en' },
+      types: { 'text/plain': [{ url: '/llms.txt', title: 'llms.txt' }, { url: '/llms-full.txt', title: 'llms-full.txt' }] },
+    },
+    verification: {
+      google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION,
+      other: process.env.NEXT_PUBLIC_BING_SITE_VERIFICATION ? { 'msvalidate.01': process.env.NEXT_PUBLIC_BING_SITE_VERIFICATION } : undefined,
+    },
+    other: {
+      'geo.region': 'DE-NW',
+      'geo.placename': 'Düsseldorf',
+      'geo.position': '51.2277;6.7735',
+      ICBM: '51.2277, 6.7735',
     },
     openGraph: {
       type: 'profile',
@@ -49,6 +60,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
       alternateLocale: locale === 'de' ? ['en_US'] : ['de_DE'],
     },
     twitter: { card: 'summary_large_image', title: t.meta.title, description: t.meta.description },
+    referrer: 'strict-origin-when-cross-origin',
+    publisher: person.fullName,
     robots: { index: true, follow: true, googleBot: { index: true, follow: true, 'max-image-preview': 'large', 'max-snippet': -1 } },
     formatDetection: { telephone: false },
   };

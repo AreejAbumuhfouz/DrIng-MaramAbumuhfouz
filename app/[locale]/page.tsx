@@ -34,7 +34,10 @@ export default async function Page({ params }: { params: Promise<{ locale: strin
         image: `${SITE_URL}/logo.png`,
         email: `mailto:${person.email}`,
         sameAs: [person.linkedin, person.dissertationUrl],
-        address: { '@type': 'PostalAddress', addressLocality: 'Düsseldorf', addressCountry: 'DE' },
+        address: { '@type': 'PostalAddress', addressLocality: 'Düsseldorf', addressRegion: 'NRW', addressCountry: 'DE' },
+        hasOccupation: { '@type': 'Occupation', name: 'Process Engineer – Research & Development', occupationLocation: { '@type': 'Country', name: 'Germany' }, skills: t.hero.keywords.join(', ') },
+        hasCredential: { '@type': 'EducationalOccupationalCredential', credentialCategory: 'degree', name: 'PhD in Materials Engineering (Dr.-Ing.)', recognizedBy: { '@type': 'CollegeOrUniversity', name: 'RWTH Aachen University' } },
+        mainEntityOfPage: url,
         alumniOf: [
           { '@type': 'CollegeOrUniversity', name: 'RWTH Aachen University' },
           { '@type': 'CollegeOrUniversity', name: 'Karlsruhe Institute of Technology (KIT)' },
@@ -63,6 +66,32 @@ export default async function Page({ params }: { params: Promise<{ locale: strin
         sourceOrganization: 'RWTH Aachen University',
         url: person.dissertationUrl,
         about: ['β-FeSi2', 'thin films', 'photovoltaics', 'EBSD', 'XRD'],
+      },
+      {
+        '@type': 'WebSite',
+        '@id': `${SITE_URL}/#website`,
+        url: SITE_URL,
+        name: person.fullName,
+        inLanguage: ['en', 'de'],
+        publisher: { '@id': `${SITE_URL}/#person` },
+      },
+      {
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          { '@type': 'ListItem', position: 1, name: person.fullName, item: SITE_URL },
+          { '@type': 'ListItem', position: 2, name: locale === 'de' ? 'Deutsch' : 'English', item: url },
+        ],
+      },
+      {
+        '@type': 'ItemList',
+        name: t.projects.title,
+        itemListElement: [
+          { '@type': 'ListItem', position: 1, item: { '@type': 'ResearchProject', name: t.research.thesis, description: t.research.summary, image: `${SITE_URL}/research/thickness.png` } },
+          ...t.projects.items.map((p, i) => ({
+            '@type': 'ListItem', position: i + 2,
+            item: { '@type': 'ResearchProject', name: p.t, description: p.d, image: `${SITE_URL}${p.img}` },
+          })),
+        ],
       },
       {
         '@type': 'FAQPage',
@@ -267,34 +296,30 @@ export default async function Page({ params }: { params: Promise<{ locale: strin
               <h2 className="h2">{t.projects.title}</h2>
             </Reveal>
             <div className="mt-10 space-y-8">
-              {t.projects.items.map((p) => (
-                <Reveal key={p.n} as="article" className="card overflow-hidden p-6 sm:p-8">
-                  <div className={`grid gap-8 ${p.img ? 'lg:grid-cols-[1fr_1.15fr]' : ''}`}>
-                    <div>
-                      <div className="flex items-center gap-3">
-                        <span className="font-display text-4xl font-bold text-gradient">{p.n}</span>
-                        <span className="rounded-full bg-teal/10 px-3 py-1 text-xs font-semibold text-teal-600 dark:text-teal-300">{p.tag}</span>
+              {t.projects.items.map((p, i) => (
+                <Reveal key={p.n} as="article" className="card overflow-hidden p-6 sm:p-8 lg:p-10">
+                  <div className="grid gap-8 lg:grid-cols-2 lg:gap-12">
+                    <div className={i % 2 === 1 ? 'lg:order-2' : ''}>
+                      <div className="flex flex-wrap items-center gap-3">
+                        <span className="font-display text-5xl font-bold text-gradient">{p.n}</span>
+                        <span className="rounded-full bg-teal/10 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-teal-600 dark:text-teal-300">{p.tag}</span>
                       </div>
-                      <h3 className="mt-4 font-display text-2xl font-bold text-navy-800 sm:text-3xl dark:text-white">{p.t}</h3>
-                      <p className="mt-3 leading-relaxed text-navy-700/85 dark:text-slate-400">{p.d}</p>
-                      {p.stats.length > 0 && (
-                        <div className="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-3">
-                          {p.stats.map((s) => (
-                            <div key={s.l} className="rounded-2xl bg-navy-800 p-4 text-white dark:bg-navy-950">
-                              <p className="font-display text-xl font-bold text-amber-300">{s.v}</p>
-                              <p className="mt-1 text-xs text-slate-300">{s.l}</p>
-                            </div>
-                          ))}
-                        </div>
-                      )}
-                      <p className="mt-6 rounded-2xl bg-amber/15 px-4 py-3 text-sm font-medium text-navy-800 dark:text-amber-200">{p.tools}</p>
+                      <h3 className="mt-4 font-display text-2xl font-bold leading-tight text-navy-800 sm:text-3xl dark:text-white">{p.t}</h3>
+                      <p className="mt-4 leading-relaxed text-navy-700/85 dark:text-slate-400">{p.d}</p>
+                      <div className="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-3">
+                        {p.stats.map((s) => (
+                          <div key={s.l} className="rounded-2xl bg-navy-800 p-4 text-white dark:bg-navy-950">
+                            <p className="font-display text-lg font-bold text-amber-300 sm:text-xl">{s.v}</p>
+                            <p className="mt-1 text-xs leading-snug text-slate-300">{s.l}</p>
+                          </div>
+                        ))}
+                      </div>
+                      <p className="mt-6 rounded-2xl border border-amber/30 bg-amber/10 px-4 py-3 text-sm font-medium text-navy-800 dark:text-amber-200">{p.tools}</p>
                     </div>
-                    {p.img && (
-                      <div className="grid gap-4">
-                        <Figure src={p.img} caption={p.t} pending={t.ui.imagePending} contain tall={!('img2' in p)} />
-                        {'img2' in p && p.img2 && <Figure src={p.img2} caption={locale === 'de' ? 'J-V-Kurven mit 100-cm- und 50-cm-Linse' : 'J-V curves with 100 cm and 50 cm lens'} pending={t.ui.imagePending} contain />}
-                      </div>
-                    )}
+                    <div className={`grid content-start gap-4 ${i % 2 === 1 ? 'lg:order-1' : ''}`}>
+                      <Figure src={p.img} caption={p.cap} pending={t.ui.imagePending} contain tall={!p.img2} />
+                      {p.img2 && <Figure src={p.img2} caption={p.cap2} pending={t.ui.imagePending} contain />}
+                    </div>
                   </div>
                 </Reveal>
               ))}
